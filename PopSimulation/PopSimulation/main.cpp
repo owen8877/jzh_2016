@@ -379,6 +379,9 @@ double BasicTest(int maximumMonth) {
 	using namespace enumExt;
 	using namespace enumType;
 
+	ofstream totalBirthRateOutput;
+	totalBirthRateOutput.open("totalBirthRate1.txt");
+
 	for (int month = 0; month <= maximumMonth; month++)
 		for (int age = 0; age <= 1200; age++)
 			for (popRegion region = city; region <= country; ++region)
@@ -393,7 +396,8 @@ double BasicTest(int maximumMonth) {
 				for (int kid = 0; kid <= 2; kid++) dynamicPop[0][age][region][education][kid] = pop[age][region][education][kid];
 	for (int curMonth = 0; curMonth <= maximumMonth - 1; curMonth++) {
 		//放开二胎
-		if (curMonth == 60) GenerateEtaAge();
+		//if (curMonth == 60) GenerateEtaAge();
+		if (curMonth == 60) lambdaPolicy[1] = 1.96;
 		//自然死亡
 		for (int age = 0; age <= 1199; age++)
 			for (popRegion region = city; region <= country; ++region)
@@ -403,11 +407,26 @@ double BasicTest(int maximumMonth) {
 						if (kid < 2) dynamicPop[curMonth + 1][age + 1][region][education][kid + 1] += dynamicPop[curMonth][age][region][education][kid] * (1 - averageDeathRate[age][region]) * averageBirthRate[age] * etaAge[age / 12][kid];
 						else dynamicPop[curMonth + 1][age + 1][region][education][kid] += dynamicPop[curMonth][age][region][education][kid] * (1 - averageDeathRate[age][region]) * averageBirthRate[age] * etaAge[age / 12][kid];
 					}
+		//统计总和生育率
+		double totalBirthRate = 0, womenAge[101], birthYearly = 0;
+		for (int age = 0; age <= 100; age++) womenAge[age] = 0;
+		for (int age = 0; age <= 1200; age++)
+			for (popRegion region = city; region <= country; ++region)
+				for (popEducation education = primary; education <= senior; ++education)
+					for (int kid = 0; kid <= 2; kid++) womenAge[age / 12] += dynamicPop[curMonth][age][region][education][kid] / (1 + sexRatio);
+		for (int age = 0; age <= 1200; age++) {
+			if (age % 12 == 0) birthYearly = 0;
+			for (popRegion region = city; region <= country; ++region)
+				for (popEducation education = primary; education <= senior; ++education)
+					for (int kid = 0; kid <= 2; kid++) birthYearly += averageBirthRate[age] * lambdaPolicy[kid] * lambdaRegionEducation[region][education] * dynamicPop[curMonth][age][region][education][kid] * etaAge[age / 12][kid] / (1 + sexRatio);
+			if ((age + 1) % 12 == 0) totalBirthRate += birthYearly / (womenAge[age / 12] * 1.0);
+		}
+		totalBirthRateOutput << totalBirthRate * 12 << ' ';
 		//产生新一代
 		for (popRegion region = city; region <= country; ++region)
 			for (popEducation education = primary; education <= senior; ++education) {
 				double temp = 0;
-				for (int age = 0; age <= 1200; age++)
+				for (int age = 0; age <= 1200; age++) 
 					for (int kid = 0; kid <= 2; kid++) {
 						temp += averageBirthRate[age] * lambdaPolicy[kid] * lambdaRegionEducation[region][education] * dynamicPop[curMonth][age][region][education][kid] * etaAge[age / 12][kid] / (1 + sexRatio);
 						// if (age == curMonth + 12 * 16) kidsum += averageBirthRate[age] * lambdaPolicy[kid] * lambdaRegionEducation[region][education] * dynamicPop[curMonth][age][region][education][kid] / (1 + sexRatio);
@@ -438,24 +457,26 @@ double BasicTest(int maximumMonth) {
 				}
 	}
 	
+	totalBirthRateOutput.close();
+
 	ofstream outputFile;
 	int num1 = 0, num2 = 0;
 	outputFile.open(outputFileName);
 	for (int month = 0; month <= maximumMonth; month++) {
-		double curPop = 0;
-		for (popRegion region = city; region <= country; ++region) {
-			for (int age = 0; age <= 1200; age++)
-				for (popEducation education = primary; education <= senior; ++education)
-					for (int kid = 0; kid <= 2; kid++) {
-						curPop += dynamicPop[month][age][region][education][kid];
-						// if (region == country) num1 += dynamicPop[month][age][region][education][kid];	// To Generate Move
-						//if (education == senior && age >= 24 * 12) num1 += dynamicPop[month][age][region][education][kid];	// To Generate Smarter
-					}
-		}
+		double curCityPop = 0, curTownPop = 0, curCountryPop = 0;
+		for (int age = 0; age <= 1200; age++)
+			for (popEducation education = primary; education <= senior; ++education)
+				for (int kid = 0; kid <= 2; kid++) {
+					curCityPop += dynamicPop[month][age][city][education][kid];
+					curTownPop += dynamicPop[month][age][town][education][kid];
+					curCountryPop += dynamicPop[month][age][country][education][kid];
+					// if (region == country) num1 += dynamicPop[month][age][region][education][kid];	// To Generate Move
+					//if (education == senior && age >= 24 * 12) num1 += dynamicPop[month][age][region][education][kid];	// To Generate Smarter
+				}
 		//if (month == 0) num1 = curPop * transformRatio;	//To Generate Policy
 		//if (month == 12) num2 = curPop * transformRatio;	//To Generate Policy
 		//if (month == 60) num2 = curPop;	// To Generate Move & Smarter
-		outputFile << int(curPop * transformRatio) << ' ';
+		outputFile << int(curCityPop * transformRatio) << ' ' << int(curTownPop * transformRatio) << ' ' << int(curCountryPop * transformRatio) << endl;
 	}
 	outputFile.close();
 	//return (num2 / (num1 * 1.0) - 1);		//To Generate Policy
