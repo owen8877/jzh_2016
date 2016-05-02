@@ -5,12 +5,12 @@
 
 using namespace std;
 
-const char* outputFileName = "output_file_0.txt";
+const char* outputFileName = "output_file_2.txt";
 const double sexRatio = 1.0347; // 1.0365
 const double transformRatio = 1332810869 / 127339585.0; // 19612368	/ 1849475.0	
 const double doubleinfantRatio = 372295 / 1190060.0;
 
-double lambdaPolicy[3] = { 1 , 1 , 1 };
+double lambdaPolicy[3] = { 1.92 , 1.92 , 1.92 };
 double lambdaMove[2] = { 0, 0 }; // VERIFIED! 0.0019669
 double lambdaSmarter[2] = { 0, 0 }; // VERIFIED! 0.000578613
 double etaAge[100][3];
