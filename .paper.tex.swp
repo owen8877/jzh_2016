@@ -134,7 +134,7 @@
 		\end{tabular}
 	\end{table}
 \section{小结}
-	把这个naive的模型批判一番
+	蛤
 	
 \part{人口增长模型修正与应用}
 \section{假设}
@@ -159,12 +159,6 @@
 		\end{tabular}
 	\end{table}
 \section{数据引用}
-\begin{itemize}
-\item 人口增长率
-\item 城乡比
-\item 姿势水平的人数
-\end{itemize}
-剩下的就直接甩链接。
 \section{模型的修正}
 \subsection{依据生育情况区分妇女}
 首先，适育妇女数，依照她们已生育孩子的数目，可分为$W_0$、$W_1$、$W_2$这三类，分别表示未生孩子、已生一个孩子与生了两个及以上的妇女数目。在这样的分类下，等式\ref{simple_tiny_people_birth}将被修正为如下带有下标的形式：
@@ -194,14 +188,13 @@
 		\caption{$\lambda_i$拟合结果}
 		\label{amend_lambda_i_value}
 		\begin{tabular}{c|ccc}
-			参数	&	$\lambda_0$	&	$\lambda_1$	&	$\lambda_2$	\\
+			参数	&	$\lambda_i$	&	$\lambda_i$	&	$\lambda_i$	\\
 			\hline
 			值		&	 	&		&		\\
 		\end{tabular}
 	\end{table}
 \indent
-在第一次修正后，中国人口增长趋势大致如图所示。\\
-图图图
+在第一次修正后，中国人口增长趋势大致如图所示。
 \subsection{考虑人口的地域与教育水平的迁移}
 随着时间的推移，人口逐渐向城市靠拢，同时由于自身的不断学习，受教育水平也在不断提升。这两个方面的迁移由以下的方程组来描述：
 	\begin{equation}
@@ -253,7 +246,7 @@
 \indent
 
 \section{小结}
-	再批判一番
+	蛤
 	
 \part{把其他人的论文批判一番}
 	\section{你们啊，naive}
@@ -270,117 +263,20 @@
 		蛤
 	
 \part{北京市的人口增长模型}
-\section{讨论}
-考虑到北京市城市人口占总人口大多数【来源请求】，所以我们认为北京市的迁入人口转化为了城市人口。为了研究北京市每年净迁入人口的数目，我们假定，外来人口即为无户籍的常住人口。
-\section{数据的引用}
-\begin{itemize}
-\item 流入人口数目
-\end{itemize}
-\section{模型的再次修正}
-我们只要对等式\ref{amend_migrate}进行修正，加入外来人口的因素：
-	\begin{equation}
-		\label{beijing_amend_migrate}
-		\sum_{e_l} N'''(a,r_0,e_l,t+1) = \sum_{e_l} N''(a,r_0,e_l,t+1) + M(a,t)
-	\end{equation}
-其中$M(a,t)$是$t$时间段内迁入北京市的$a$岁人口数目，$N'''(a,r_0,e_l,t+1)$是这一次修正后城市各受教育程度的人口数。\\\\
-\indent
-根据统计数据，在一个固定研究时间段内，$M(a,t)$随着$a$的分布如表\ref{beijing_migrate_rate}所示。如果假定在各年龄层迁入人口保持相同比例，那么，$M(a,t)$与总迁入人数$M(t)$的比例$\phi_a = \frac{M(a,t)}{M(t)}$满足如下关系：
-	\begin{table}[H]
-		\centering
-		\caption{北京迁入人口随年龄的分布}
-		\label{beijing_migrate_rate}
-		\begin{tabular}{ccc}
-			\hline
-			年龄$a$分布	&	$\frac{\sum_a M(a,t)}{M(t)}$	&	$\phi_a$	\\
-			\hline
-			$[0,15)$			&	7.00\%	&	0.467\%	\\
-			$[15,40)$		&	82.4\%	&	3.296\%	\\
-			$[40,60)$		&	9.8\%		&	0.490\%	\\
-			$[60,\infty)$	&	0.8\%		&	0.020\%	\\
-			\hline
-		\end{tabular}
-	\end{table}
-\indent
-北京市总迁入人口$M(t)$，是基于历年的迁入人口拟合得出的：
-	\begin{equation}
-		\label{beijing_migrate_all}
-		M(t) = M_0 + M_1 \cdot e^{-\kappa (t-t_0)}
-	\end{equation}
-其中参数拟合结果如表\ref{beijing_migrate_para}所示。
-	\begin{table}[H]
-		\centering
-		\caption{北京迁入人口参数拟合结果\ $t_0$=2010}
-		\label{beijing_migrate_para}
-		\begin{tabular}{c|ccc}
-			参数	&	$M_0$	&	$M_1$	&	$\kappa$	\\
-			\hline
-			值		&	 	&		&	\\
-		\end{tabular}
-	\end{table}
-\section{模型的预测}
-	这大清吃枣药丸
-\section{小结}
-	唉
+	\section{讨论}
+		蛤
+	\section{模型的再次修正}
+		蛤
+	\section{模型的预测}
+		蛤
+	\section{小结}
+		蛤
 	
 \part{政策对社会造成的影响}
-	苟利国家生死以，岂因祸福避趋之
+	蛤
 
 \part{养老金模型}
-下面不加特殊说明时，研究对象均为北京市与北京市人口。
-\section{概述}
-抄抄抄
-\section{符号表}
-又可以拖页数啦
-\section{数据的引用}
-\begin{itemize}
-\item 2010年人均收入与养老金水平
-\item 养老金补贴指数与通货膨胀率 保险金征收比例
-\item 北京养老基金还有多少钱
-\end{itemize}
-\section{模型的建立}
-我们从养老金的支出与收入两方面来看待养老金的流动。对于$t$时间国家养老基金的已有积累，采用记号$F(t)$。
-\subsection{支出}
-养老基金的支出，即为给符合条件的老龄人口的发放。为了简化问题，我们并不考虑养老金与退休人员的年龄之间的关系；亦即，退休人员在同一年中获得相同的养老金。考虑$t$时间内养老基金的减少量$F_o$：
-	\begin{equation}
-		\label{pension_out}
-		F_o(t) = N_o(t) \cdot P(t)
-	\end{equation}
-其中$N_o(t)=\sum_{A_R(t) \leq a} N(a,t)$是所有符合退休条件的人数，$P(t)$是养老金发放的金额。\\\\
-\indent
-而养老金的发放金额，根据【来源请求】，是由一个基准量加上修正而得到的；我们可以依此列出方程：
-	\begin{equation}
-		\label{pension_per_out}
-		P(t) =  P_0 \cdot \gamma_p^{t-t_0}
-	\end{equation}
-其中$P_0$是$t_0$年养老金发放的平均水平，$\gamma_p$是养老金上调幅度。
-\subsection{收入}
-养老基金的收入，主要依赖于企事业员工定期缴纳的养老保险金。类似的，我们并不考虑缴纳人员的收入差异，而使用他们的平均工资代替。那么，
-	\begin{equation}
-		\label{pension_in}
-		F_i(t) = N_i(t) \cdot C(t)
-	\end{equation}
-其中$N_i(t)=\sum_{A_W(t) \leq a < A_R(t)} N(a,t)$是所有符合缴纳保险金的人数，$C(t)$是单个参保人员需要缴纳的保险金。\\\\
-\indent
-而单个参保人员需要缴纳的保险金，根据【来源请求】，是根据其收入与生活物价水平综合计算而得的；于是
-	\begin{equation}
-		\label{pension_per_in}
-		C(t) = S(t) \cdot \gamma_i^{t-t_0} \cdot \theta_p
-	\end{equation}
-其中$S_0$是$t_0$年人均收入，$\gamma_i$是物价水平上涨指数，$\theta_p$是养老金征收比例。
-\subsection*{小结}
-因此，综合以上两方面，我们写出养老基金积累的递推关系：
-	\begin{eqnarray}
-		\label{pension_io}
-		F(t+1) &=& F(t) - F_o(t) + F_i(t) \\
-					&=& \sum_{A_R(t) \leq a} N(a,t) \cdot P_0 \cdot \gamma_p^{t-t_0} \nonumber \\
-					&+& \sum_{A_W(t) \leq a < A_R(t)} N(a,t) S(t) \cdot \gamma_i^{t-t_0} \cdot \theta_p
-	\end{eqnarray}
-\section{数据的预测}
-养老金肯定是发不出来的，嗯
-\section{二胎政策的影响}
-虽然我们还是很naive，但是zf也不能把我们当傻瓜看啊，根本就没有什么卵用
-\section{小结}
-你问我吼不吼，那当然吼啊。
+	蛤
 
 \part{总结}
 	蛤

@@ -318,25 +318,16 @@
 		\end{tabular}
 	\end{table}
 \section{模型的预测}
-	这大清吃枣药丸
+	这大清吃枣
 \section{小结}
-	唉
+	蛤
 	
 \part{政策对社会造成的影响}
-	苟利国家生死以，岂因祸福避趋之
+	蛤
 
 \part{养老金模型}
 下面不加特殊说明时，研究对象均为北京市与北京市人口。
 \section{概述}
-抄抄抄
-\section{符号表}
-又可以拖页数啦
-\section{数据的引用}
-\begin{itemize}
-\item 2010年人均收入与养老金水平
-\item 养老金补贴指数与通货膨胀率 保险金征收比例
-\item 北京养老基金还有多少钱
-\end{itemize}
 \section{模型的建立}
 我们从养老金的支出与收入两方面来看待养老金的流动。对于$t$时间国家养老基金的已有积累，采用记号$F(t)$。
 \subsection{支出}
@@ -376,11 +367,7 @@
 					&+& \sum_{A_W(t) \leq a < A_R(t)} N(a,t) S(t) \cdot \gamma_i^{t-t_0} \cdot \theta_p
 	\end{eqnarray}
 \section{数据的预测}
-养老金肯定是发不出来的，嗯
-\section{二胎政策的影响}
-虽然我们还是很naive，但是zf也不能把我们当傻瓜看啊，根本就没有什么卵用
 \section{小结}
-你问我吼不吼，那当然吼啊。
 
 \part{总结}
 	蛤
